@@ -7,4 +7,5 @@ export function authMiddleware(to, from, next) {
       next({ name: 'Login' });
   } else {
       next(); 
+  }
 }
