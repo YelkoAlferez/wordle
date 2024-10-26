@@ -1,12 +1,12 @@
-
 <template>
   <div id="app">
-    <router-view></router-view> <!-- This will display the current route's component -->
+    <router-view></router-view>
+    <!-- This will display the current route's component -->
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  name: 'App'
+  name: 'App',
 }
 </script>

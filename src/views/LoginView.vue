@@ -113,11 +113,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Swal from 'sweetalert2'
+import { useRouter } from 'vue-router'
+import { useUser } from '@/composables/useUser'
 
 const email = ref('')
 const password = ref('')
 const width = window.innerWidth
-
+const router = useRouter()
+const user = useUser()
 const endpoint = 'http://127.0.0.1:8000/api/login'
 
 async function login() {
@@ -138,11 +141,9 @@ async function login() {
     const json = await resp.json()
 
     if (json.retCode == 200) {
-      Swal.fire({
-        title: 'Inicio de sesión correcto',
-        icon: 'success',
-        text: 'Hola ' + json.name,
-      })
+      localStorage.setItem('authToken', 'guniguni')
+      user.setUser(json.id, json.name, json.email)
+      router.push('/')
     } else {
       Swal.fire({
         title: 'Inicio de sesión incorrecto',
