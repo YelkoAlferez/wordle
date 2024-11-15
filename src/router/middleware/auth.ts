@@ -12,7 +12,7 @@ export function authMiddleware(
     next({ name: 'Home' })
   } else if (!isAuthenticated && to.name !== 'Login') {
     next({ name: 'Login' })
-  } else {
-    next()
+  } else if (!isAuthenticated && to.name !== 'Login' && to.name !== 'Home') {
+    next({ name: 'Home' })
   }
 }

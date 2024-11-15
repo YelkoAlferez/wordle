@@ -121,7 +121,8 @@ const password = ref('')
 const width = window.innerWidth
 const router = useRouter()
 const user = useUser()
-const endpoint = 'http://127.0.0.1:8000/api/login'
+const endpoint = 'http://wordle.api.yelkoalferez.es/api/login'
+// const endpoint = 'http://127.0.0.1:8000/api/login'
 
 async function login() {
   console.log(email.value, password.value)
@@ -143,7 +144,7 @@ async function login() {
     if (json.retCode == 200) {
       localStorage.setItem('authToken', 'guniguni')
       user.setUser(json.id, json.name, json.email)
-      router.push('/')
+      router.push('/home')
     } else {
       Swal.fire({
         title: 'Inicio de sesión incorrecto',
